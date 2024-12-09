@@ -1,19 +1,14 @@
 pipeline {
   agent any 
   stages {
-    stage('working with files') {
+    stage('working with file IO') {
       steps {
         script {
-          File file = new File("/tmp/test.txt")
-          def lines = file.readLines()
-          println "Lines\n ${lines}"
-          for(line in lines)
-          {
-            println line
-          }
+          File myfile = new File("/tmp/newfile.txt")
+          myfile.write("Hello All")
+          println "content is ${myfile.text}"
         }
       }
     }
   }
 }
-
